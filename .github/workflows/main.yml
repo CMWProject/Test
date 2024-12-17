@@ -1,0 +1,16 @@
+name: R2015a
+on: [push]
+jobs: 
+  my-job:
+    name: Run MATLAB Script
+    runs-on: self-hosted
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Open MATLAB
+        if: runner.os == 'Windows'
+        run: echo "D:\Program Files\MATLAB\R2015aSP1\bin"
+      - name: Run script
+        uses: matlab-actions/run-command@v2
+        with:
+          command: MyScript
